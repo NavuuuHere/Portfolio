@@ -64,3 +64,18 @@ const types = new Typed ('.multitext', {
     backDelay: 769,
     loop: true
 }) 
+
+
+// to get form data 
+
+const scriptUrl = 'https://script.google.com/macros/s/AKfycbyjPc0iiV2WuasbbF6lVo3cuhutPuu4wNZMOkp0LR4StmieRPubixwe3uq-tnL38n5sFQ/exec'
+
+const form = document.forms(form);
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptUrl, {method: "POST", body: new FormData(form)})
+  .then(response => alert("Thanks For Submitting Your Details, I Will Respond To You As Soon As Possible!"))
+  .then(() => {window.location.reload(); })
+  .catch (error => ('Something Went Wrong', error.message))
+})
